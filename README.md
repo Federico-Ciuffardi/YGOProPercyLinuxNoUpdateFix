@@ -2,10 +2,10 @@
 
 This doesn't fix the automatic updates, it will just update your game to the last version. 
 
-##How to install
+## How to install
 paste update.sh on your ygopro folder.
 
-##How to use
+## How to use
 run:
 ```
 sh update.sh

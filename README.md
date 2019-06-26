@@ -8,5 +8,5 @@ paste update.sh on your ygopro folder.
 ## How to use
 run:
 ```
-./update.sh
+./update
 ```

@@ -4,7 +4,7 @@ function update {
 	echo  $1 update
 	rm /tmp/master.zip &> /dev/null
 	echo Downloading...
-    wget -P /tmp/ https://github.com/Ygoproco/$1/archive/master.zip  -q --show-progress
+	wget -P /tmp/ https://github.com/Ygoproco/$1/archive/master.zip  -q --show-progress
 	echo Installing...
 	unzip /tmp/master.zip -d /tmp/ &> /dev/null
 	lc=`echo $1 | tr '[:upper:]' '[:lower:]'`	

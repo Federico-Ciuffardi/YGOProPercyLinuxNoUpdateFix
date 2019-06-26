@@ -6,7 +6,7 @@ function update {
 	echo Downloading...
 	wget -P /tmp/ https://github.com/Ygoproco/$1/archive/master.zip  -q --show-progress
 	echo Installing...
-	unzip /tmp/master.zip -d /tmp/ &> /dev/null
+	unzip -o /tmp/master.zip -d /tmp/ &> /dev/null
 	lc=`echo $1 | tr '[:upper:]' '[:lower:]'`	
 	rm -R ./expansions/$lc &> /dev/null
 	mv /tmp/*-master ./expansions/$lc &> /dev/null

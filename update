@@ -1,17 +1,25 @@
 #!/bin/bash
 
-function update {
-	echo  $1 update
-	rm /tmp/master.zip &> /dev/null
-	echo Downloading...
-	wget -P /tmp/ https://github.com/Ygoproco/$1/archive/master.zip  -q --show-progress
-	echo Installing...
-	unzip -o /tmp/master.zip -d /tmp/ &> /dev/null
-	lc=`echo $1 | tr '[:upper:]' '[:lower:]'`	
-	rm -R ./expansions/$lc &> /dev/null
-	mv /tmp/*-master ./expansions/$lc &> /dev/null
-	echo "done!"
+function eraseDir {
+    if [ -e $1 ] ; then
+        rm -R $1 #&> /dev/null
+    fi
 }
 
+function update {
+    echo $1 update
+    eraseDir $auxDir/master.zip
+    echo Downloading...
+    wget -P $auxDir/ https://github.com/Ygoproco/$1/archive/master.zip  -q --show-progress
+    echo Installing...
+    unzip -o $auxDir/master.zip -d $auxDir/ #&> /dev/null
+    lc=`echo $1 | tr '[:upper:]' '[:lower:]'`	
+    eraseDir $dirBase/expansions/$lc #&> /dev/null
+    mv $auxDir/*-master $dirBase/expansions/$lc #&> /dev/null
+    echo "done!"
+}
+
+auxDir="/tmp"
+dirBase=`pwd`
 update LiveanimeLinks
 update Live2017Links
